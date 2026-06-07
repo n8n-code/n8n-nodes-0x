@@ -54,10 +54,10 @@ export class N0xApi implements ICredentialType {
 	};
 
 	test: ICredentialTestRequest = {
-		request: {
-			baseURL: '={{$credentials.url}}',
-			url: '/',
-			method: 'GET',
-		},
-	};
+			"request": {
+				"baseURL": "={{ $credentials.baseUrl }}",
+				"url": "/sources",
+				"method": "GET"
+			}
+		};
 }
