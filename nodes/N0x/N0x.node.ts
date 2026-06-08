@@ -8,7 +8,7 @@ export class N0x implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: '0x',
 		name: 'N8nDevN0x',
-		icon: { light: 'file:./0x.svg', dark: 'file:./0x.dark.svg' },
+		icon: { light: 'file:./0x.png', dark: 'file:./0x.dark.png' },
 		group: ['input'],
 		version: 1,
 		subtitle: '={{\$parameter["operation"] + ": " + \$parameter["resource"]}}',

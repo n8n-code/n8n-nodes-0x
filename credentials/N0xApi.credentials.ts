@@ -10,7 +10,7 @@ export class N0xApi implements ICredentialType {
 
 	displayName = '0x API';
 
-	icon: Icon = { light: 'file:../nodes/N0x/0x.svg', dark: 'file:../nodes/N0x/0x.dark.svg' };
+	icon: Icon = { light: 'file:../nodes/N0x/0x.png', dark: 'file:../nodes/N0x/0x.dark.png' };
 
 	documentationUrl = '';
 
