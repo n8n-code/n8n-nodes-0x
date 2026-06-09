@@ -53,12 +53,43 @@ That's it. No configuration files. No code. It just works.
 
 ## Resources
 
-| Resource | Operations |
-|----------|------------|
-| Swap | GET getPrice (Allowance Holder), GET getQuote (Allowance Holder), GET getPrice (Permit2), GET getQuote (Permit2), GET getChains |
-| Gasless | GET getPrice, GET getQuote, POST submit, GET getStatus, GET getGaslessApprovalTokens, GET getChains |
-| Sources | GET getSources |
-| Trade Analytics | GET getSwapTrades, GET getGaslessTrades |
+<details>
+<summary><b>Swap</b> (5 operations)</summary>
+
+- Get Price Allowance Holder
+- Get Quote Allowance Holder
+- Get Price Permit2
+- Get Quote Permit2
+- Get Chains
+
+</details>
+
+<details>
+<summary><b>Gasless</b> (6 operations)</summary>
+
+- Get Price
+- Get Quote
+- Post submit
+- Get Status
+- Get GaslessApprovalTokens
+- Get Chains
+
+</details>
+
+<details>
+<summary><b>Sources</b> (1 operations)</summary>
+
+- Get Sources
+
+</details>
+
+<details>
+<summary><b>Trade Analytics</b> (2 operations)</summary>
+
+- Get SwapTrades
+- Get GaslessTrades
+
+</details>
 
 ---
 

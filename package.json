@@ -1,7 +1,7 @@
 {
   "name": "@n8n-dev/n8n-nodes-0x",
-  "version": "2.0.6",
-  "description": "0x DEX aggregator providing unified interface for liquidity aggregation token swap pricing and onchain trading across EVM Solana and cross-chain",
+  "version": "2.0.7",
+  "description": "0x DEX aggregator unifies liquidity, token swaps, pricing, and onchain trading across EVM, Solana, and cross-chain.",
   "license": "MIT",
   "homepage": "https://n8n-code.github.io/n8n-dev/#/n8n-nodes-0x",
   "keywords": [
@@ -11,7 +11,7 @@
     "n8n-community-node-package",
     "openapi",
     "swagger",
-    "api",
+    "API",
     "automation",
     "workflow",
     "0x"

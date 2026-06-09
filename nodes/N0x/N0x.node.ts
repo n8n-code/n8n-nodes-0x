@@ -12,7 +12,7 @@ export class N0x implements INodeType {
 		group: ['input'],
 		version: 1,
 		subtitle: '={{\$parameter["operation"] + ": " + \$parameter["resource"]}}',
-		description: '0x DEX aggregator providing unified interface for liquidity aggregation token swap pricing and onchain trading across EVM Solana and cross-chain',
+		description: '0x DEX aggregator unifies liquidity, token swaps, pricing, and onchain trading across EVM, Solana, and cross-chain.',
 		defaults: { name: '0x' },
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],

@@ -49,7 +49,7 @@ export const sourcesDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -99,7 +99,7 @@ export const sourcesDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"required": true,
 			"description": "Chain ID. See [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",

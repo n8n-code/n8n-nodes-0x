@@ -109,7 +109,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -159,7 +159,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"required": true,
 			"description": "Chain ID. See [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",
@@ -532,7 +532,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -582,7 +582,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"required": true,
 			"description": "Chain ID. See [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",
@@ -956,7 +956,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -1007,7 +1007,7 @@ export const gaslessDescription: INodeProperties[] = [
 		},
 		{
 			"required": true,
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"type": "number",
 			"default": 0,
@@ -1102,7 +1102,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -1152,7 +1152,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"required": true,
 			"description": " [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",
@@ -1215,7 +1215,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -1265,7 +1265,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Chain Id",
+			"displayName": "Chain ID",
 			"name": "chainId",
 			"required": true,
 			"description": "Chain ID. See [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",
@@ -1310,7 +1310,7 @@ export const gaslessDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",

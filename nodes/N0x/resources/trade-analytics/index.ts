@@ -61,7 +61,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
@@ -205,7 +205,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "0 X Api Key",
+			"displayName": "0 X API Key",
 			"name": "0x-api-key",
 			"required": true,
 			"description": "Visit dashboard.0x.org to get your API Key",
