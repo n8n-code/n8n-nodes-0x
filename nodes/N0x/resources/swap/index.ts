@@ -577,7 +577,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Entire Balance",
 			"name": "sellEntireBalance",
-			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/docs/0x-swap-api/additional-topics/sell-entire-balance).",
+			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/evm/0x-swap-api/additional-topics/sell-entire-balance).",
 			"default": "false",
 			"type": "options",
 			"options": [
@@ -1135,7 +1135,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Entire Balance",
 			"name": "sellEntireBalance",
-			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/docs/0x-swap-api/additional-topics/sell-entire-balance).",
+			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/evm/0x-swap-api/additional-topics/sell-entire-balance).",
 			"default": "false",
 			"type": "options",
 			"options": [
@@ -1692,7 +1692,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Entire Balance",
 			"name": "sellEntireBalance",
-			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/docs/0x-swap-api/additional-topics/sell-entire-balance).",
+			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/evm/0x-swap-api/additional-topics/sell-entire-balance).",
 			"default": "false",
 			"type": "options",
 			"options": [
@@ -2250,7 +2250,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Entire Balance",
 			"name": "sellEntireBalance",
-			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/docs/0x-swap-api/additional-topics/sell-entire-balance).",
+			"description": "If set to `true`, the taker's entire `sellToken` balance will be sold during trade execution. The `sellAmount` should be the maximum estimated value, as close as possible to the actual taker's balance to ensure the best routing. Selling more than the `sellAmount` may cause the trade to revert. This feature is designed for cases where the precise sell amount is determined during execution. Learn more [here](https://docs.0x.org/evm/0x-swap-api/additional-topics/sell-entire-balance).",
 			"default": "false",
 			"type": "options",
 			"options": [
