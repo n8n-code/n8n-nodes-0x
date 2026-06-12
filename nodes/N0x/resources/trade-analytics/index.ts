@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 export const tradeAnalyticsDescription: INodeProperties[] = [
-		{
+                {
 			"displayName": "Operation",
 			"name": "operation",
 			"type": "options",
@@ -18,7 +18,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 					"name": "Trade Analytics Swap",
 					"value": "Trade Analytics Swap",
 					"action": "getSwapTrades",
-					"description": "Get the list of completed swap trades. Returns a maximum of 200 trades per request. Visit [here](https://docs.0x.org/evm/trade-analytics-api/introduction) for more details about how the API works.",
+					"description": "Get the list of completed swap trades. Returns a maximum of 200 trades per request. Visit [here](https://docs.0x.org/docs/trade-analytics-api/introduction) for more details about how the API works.",
 					"routing": {
 						"request": {
 							"method": "GET",
@@ -30,7 +30,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 					"name": "Trade Analytics Gasless",
 					"value": "Trade Analytics Gasless",
 					"action": "getGaslessTrades",
-					"description": "Get the list of completed gasless trades. Returns a maximum of 200 trades per request. Visit [here](https://docs.0x.org/evm/trade-analytics-api/introduction) for more details about how the API works.",
+					"description": "Get the list of completed gasless trades. Returns a maximum of 200 trades per request. Visit [here](https://docs.0x.org/docs/trade-analytics-api/introduction) for more details about how the API works.",
 					"routing": {
 						"request": {
 							"method": "GET",
