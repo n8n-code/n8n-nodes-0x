@@ -227,7 +227,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Amount",
 			"name": "sellAmount",
-			"description": "The amount of `sellToken` in `sellToken` base units to sell",
+			"description": "The amount of `sellToken` in `sellToken` base units to sell. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "100000000",
 			"type": "string",
 			"routing": {
@@ -252,7 +252,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Buy Amount",
 			"name": "buyAmount",
-			"description": "The exact amount of `buyToken` in `buyToken` base units to buy",
+			"description": "The amount of `buyToken` in `buyToken` base units to buy. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -784,7 +784,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Amount",
 			"name": "sellAmount",
-			"description": "The amount of `sellToken` in `sellToken` base units to sell",
+			"description": "The amount of `sellToken` in `sellToken` base units to sell. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "100000000",
 			"type": "string",
 			"routing": {
@@ -809,7 +809,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Buy Amount",
 			"name": "buyAmount",
-			"description": "The exact amount of `buyToken` in `buyToken` base units to buy",
+			"description": "The amount of `buyToken` in `buyToken` base units to buy. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -1342,7 +1342,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Amount",
 			"name": "sellAmount",
-			"description": "The amount of `sellToken` in `sellToken` base units to sell",
+			"description": "The amount of `sellToken` in `sellToken` base units to sell. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "100000000",
 			"type": "string",
 			"routing": {
@@ -1367,7 +1367,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Buy Amount",
 			"name": "buyAmount",
-			"description": "The exact amount of `buyToken` in `buyToken` base units to buy",
+			"description": "The amount of `buyToken` in `buyToken` base units to buy. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -1899,7 +1899,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Sell Amount",
 			"name": "sellAmount",
-			"description": "The amount of `sellToken` in `sellToken` base units to sell",
+			"description": "The amount of `sellToken` in `sellToken` base units to sell. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "100000000",
 			"type": "string",
 			"routing": {
@@ -1924,7 +1924,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Buy Amount",
 			"name": "buyAmount",
-			"description": "The exact amount of `buyToken` in `buyToken` base units to buy",
+			"description": "The amount of `buyToken` in `buyToken` base units to buy. Exactly one of `sellAmount` or `buyAmount` must be provided — specifying both will result in an error.",
 			"default": "",
 			"type": "string",
 			"routing": {
