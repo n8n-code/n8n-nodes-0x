@@ -10807,16 +10807,19 @@
                         "properties": {
                           "appName": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The name of the app that initiated the trade"
                           },
                           "blockNumber": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The block number at which the trade was executed"
                           },
                           "buyToken": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The contract address of the token received by the taker"
+                            "description": "The contract address of the token received by the taker",
+                            "nullable": true
                           },
                           "buyAmount": {
                             "type": "string",
@@ -10854,16 +10857,61 @@
                                     "type": "string",
                                     "nullable": true,
                                     "description": "The amount of the integrator fee in USD."
+                                  },
+                                  "recipient": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The wallet address that received the integrator fee",
+                                    "nullable": true
                                   }
                                 },
                                 "required": [
                                   "token",
                                   "amount",
-                                  "amountUsd"
+                                  "amountUsd",
+                                  "recipient"
                                 ],
                                 "additionalProperties": false,
                                 "description": "The details about the fee collected by integrator",
                                 "nullable": true
+                              },
+                              "integratorFees": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "token": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "The contract address of the token in which the integrator collected a fee",
+                                      "nullable": true
+                                    },
+                                    "amount": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The amount of the integrator fee, formatted by the token decimals"
+                                    },
+                                    "amountUsd": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The amount of the integrator fee in USD."
+                                    },
+                                    "recipient": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "The wallet address that received the integrator fee",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "token",
+                                    "amount",
+                                    "amountUsd",
+                                    "recipient"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "description": "All integrator fees collected on the trade. May contain multiple entries when more than one integrator fee was charged."
                               },
                               "zeroExFee": {
                                 "type": "object",
@@ -10883,12 +10931,19 @@
                                     "type": "string",
                                     "nullable": true,
                                     "description": "The amount of the 0x fee in USD."
+                                  },
+                                  "recipient": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The wallet address that received the 0x fee",
+                                    "nullable": true
                                   }
                                 },
                                 "required": [
                                   "token",
                                   "amount",
-                                  "amountUsd"
+                                  "amountUsd",
+                                  "recipient"
                                 ],
                                 "additionalProperties": false,
                                 "description": "The details about the fee collected by 0x",
@@ -10897,6 +10952,7 @@
                             },
                             "required": [
                               "integratorFee",
+                              "integratorFees",
                               "zeroExFee"
                             ],
                             "additionalProperties": false,
@@ -10904,6 +10960,7 @@
                           },
                           "gasUsed": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The amount of gas used in the trade"
                           },
                           "protocolVersion": {
@@ -10912,12 +10969,14 @@
                               "0xv4",
                               "Settler"
                             ],
-                            "description": "The version of the 0x protocol used to execute the trade"
+                            "description": "The version of the 0x protocol used to execute the trade",
+                            "nullable": true
                           },
                           "sellToken": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The contract address of the token spent by the taker"
+                            "description": "The contract address of the token spent by the taker",
+                            "nullable": true
                           },
                           "sellAmount": {
                             "type": "string",
@@ -10932,7 +10991,8 @@
                           "taker": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The wallet address of the taker​"
+                            "description": "The wallet address of the taker​",
+                            "nullable": true
                           },
                           "timestamp": {
                             "type": "integer",
@@ -10948,7 +11008,8 @@
                                 "address": {
                                   "type": "string",
                                   "pattern": "^0x[a-fA-F0-9]{40}$",
-                                  "description": "The contract address of the token"
+                                  "description": "The contract address of the token",
+                                  "nullable": true
                                 },
                                 "symbol": {
                                   "type": "string",
@@ -10976,6 +11037,7 @@
                           },
                           "zid": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The `zid` corresponding to the trade"
                           },
                           "service": {
@@ -11032,6 +11094,7 @@
                       "chainId": 1,
                       "fees": {
                         "integratorFee": null,
+                        "integratorFees": [],
                         "zeroExFee": null
                       },
                       "gasUsed": "141111",
@@ -11179,16 +11242,19 @@
                         "properties": {
                           "appName": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The name of the app that initiated the trade"
                           },
                           "blockNumber": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The block number at which the trade was executed"
                           },
                           "buyToken": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The contract address of the token received by the taker"
+                            "description": "The contract address of the token received by the taker",
+                            "nullable": true
                           },
                           "buyAmount": {
                             "type": "string",
@@ -11226,16 +11292,61 @@
                                     "type": "string",
                                     "nullable": true,
                                     "description": "The amount of the integrator fee in USD."
+                                  },
+                                  "recipient": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The wallet address that received the integrator fee",
+                                    "nullable": true
                                   }
                                 },
                                 "required": [
                                   "token",
                                   "amount",
-                                  "amountUsd"
+                                  "amountUsd",
+                                  "recipient"
                                 ],
                                 "additionalProperties": false,
                                 "description": "The details about the fee collected by integrator",
                                 "nullable": true
+                              },
+                              "integratorFees": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "token": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "The contract address of the token in which the integrator collected a fee",
+                                      "nullable": true
+                                    },
+                                    "amount": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The amount of the integrator fee, formatted by the token decimals"
+                                    },
+                                    "amountUsd": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The amount of the integrator fee in USD."
+                                    },
+                                    "recipient": {
+                                      "type": "string",
+                                      "pattern": "^0x[a-fA-F0-9]{40}$",
+                                      "description": "The wallet address that received the integrator fee",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "token",
+                                    "amount",
+                                    "amountUsd",
+                                    "recipient"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "description": "All integrator fees collected on the trade. May contain multiple entries when more than one integrator fee was charged."
                               },
                               "zeroExFee": {
                                 "type": "object",
@@ -11255,12 +11366,19 @@
                                     "type": "string",
                                     "nullable": true,
                                     "description": "The amount of the 0x fee in USD."
+                                  },
+                                  "recipient": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                                    "description": "The wallet address that received the 0x fee",
+                                    "nullable": true
                                   }
                                 },
                                 "required": [
                                   "token",
                                   "amount",
-                                  "amountUsd"
+                                  "amountUsd",
+                                  "recipient"
                                 ],
                                 "additionalProperties": false,
                                 "description": "The details about the fee collected by 0x",
@@ -11269,6 +11387,7 @@
                             },
                             "required": [
                               "integratorFee",
+                              "integratorFees",
                               "zeroExFee"
                             ],
                             "additionalProperties": false,
@@ -11276,6 +11395,7 @@
                           },
                           "gasUsed": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The amount of gas used in the trade"
                           },
                           "protocolVersion": {
@@ -11284,12 +11404,14 @@
                               "0xv4",
                               "Settler"
                             ],
-                            "description": "The version of the 0x protocol used to execute the trade"
+                            "description": "The version of the 0x protocol used to execute the trade",
+                            "nullable": true
                           },
                           "sellToken": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The contract address of the token spent by the taker"
+                            "description": "The contract address of the token spent by the taker",
+                            "nullable": true
                           },
                           "sellAmount": {
                             "type": "string",
@@ -11304,7 +11426,8 @@
                           "taker": {
                             "type": "string",
                             "pattern": "^0x[a-fA-F0-9]{40}$",
-                            "description": "The wallet address of the taker​"
+                            "description": "The wallet address of the taker​",
+                            "nullable": true
                           },
                           "timestamp": {
                             "type": "integer",
@@ -11320,7 +11443,8 @@
                                 "address": {
                                   "type": "string",
                                   "pattern": "^0x[a-fA-F0-9]{40}$",
-                                  "description": "The contract address of the token"
+                                  "description": "The contract address of the token",
+                                  "nullable": true
                                 },
                                 "symbol": {
                                   "type": "string",
@@ -11348,6 +11472,7 @@
                           },
                           "zid": {
                             "type": "string",
+                            "nullable": true,
                             "description": "The `zid` corresponding to the trade"
                           },
                           "service": {
