@@ -63,18 +63,6 @@ export const gaslessDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Gasless Get Gasless Approval Tokens",
-					"value": "Gasless Get Gasless Approval Tokens",
-					"action": "getGaslessApprovalTokens",
-					"description": "Get token addresses that support gasless approvals",
-					"routing": {
-						"request": {
-							"method": "GET",
-							"url": "=/gasless/gasless-approval-tokens"
-						}
-					}
-				},
-				{
 					"name": "Gasless Chains",
 					"value": "Gasless Chains",
 					"action": "getChains",
@@ -1191,101 +1179,6 @@ export const gaslessDescription: INodeProperties[] = [
 					],
 					"operation": [
 						"Gasless Get Status"
-					]
-				}
-			}
-		},
-		{
-			"displayName": "GET /gasless/gasless-approval-tokens",
-			"name": "operation",
-			"type": "notice",
-			"typeOptions": {
-				"theme": "info"
-			},
-			"default": "",
-			"displayOptions": {
-				"show": {
-					"resource": [
-						"Gasless"
-					],
-					"operation": [
-						"Gasless Get Gasless Approval Tokens"
-					]
-				}
-			}
-		},
-		{
-			"displayName": "0 X API Key",
-			"name": "0x-api-key",
-			"required": true,
-			"description": "Visit dashboard.0x.org to get your API Key",
-			"default": "",
-			"type": "string",
-			"routing": {
-				"request": {
-					"headers": {
-						"0x-api-key": "={{ $value }}"
-					}
-				}
-			},
-			"displayOptions": {
-				"show": {
-					"resource": [
-						"Gasless"
-					],
-					"operation": [
-						"Gasless Get Gasless Approval Tokens"
-					]
-				}
-			}
-		},
-		{
-			"displayName": "0 X Version",
-			"name": "0x-version",
-			"required": true,
-			"description": "API version",
-			"default": "v2",
-			"type": "string",
-			"routing": {
-				"request": {
-					"headers": {
-						"0x-version": "={{ $value }}"
-					}
-				}
-			},
-			"displayOptions": {
-				"show": {
-					"resource": [
-						"Gasless"
-					],
-					"operation": [
-						"Gasless Get Gasless Approval Tokens"
-					]
-				}
-			}
-		},
-		{
-			"displayName": "Chain ID",
-			"name": "chainId",
-			"required": true,
-			"description": "Chain ID. See [here](https://docs.0x.org/docs/introduction/supported-chains) for the list of supported chains",
-			"default": 8453,
-			"type": "number",
-			"routing": {
-				"send": {
-					"type": "query",
-					"property": "chainId",
-					"value": "={{ $value }}",
-					"propertyInDotNotation": false
-				}
-			},
-			"displayOptions": {
-				"show": {
-					"resource": [
-						"Gasless"
-					],
-					"operation": [
-						"Gasless Get Gasless Approval Tokens"
 					]
 				}
 			}

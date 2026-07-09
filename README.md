@@ -65,13 +65,12 @@ That's it. No configuration files. No code. It just works.
 </details>
 
 <details>
-<summary><b>Gasless</b> (6 operations)</summary>
+<summary><b>Gasless</b> (5 operations)</summary>
 
 - Get Price
 - Get Quote
 - Post submit
 - Get Status
-- Get GaslessApprovalTokens
 - Get Chains
 
 </details>
