@@ -6831,10 +6831,6 @@
                   {
                     "chainName": "Mantle",
                     "chainId": "5000"
-                  },
-                  {
-                    "chainName": "Blast",
-                    "chainId": "81457"
                   }
                 ]
               }
@@ -10444,10 +10440,6 @@
                   {
                     "chainName": "Mantle",
                     "chainId": "5000"
-                  },
-                  {
-                    "chainName": "Blast",
-                    "chainId": "81457"
                   }
                 ]
               }
