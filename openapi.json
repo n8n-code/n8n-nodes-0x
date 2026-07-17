@@ -10897,6 +10897,10 @@
                             },
                             "description": "Properties of the tokens involved in the trade"
                           },
+                          "tradeId": {
+                            "type": "integer",
+                            "description": "Internal ID of the trade. Can be used together with `chainId`, `transactionHash`, and `zid` to uniquely identify a trade."
+                          },
                           "transactionHash": {
                             "type": "string",
                             "description": "The trade's transaction hash"
@@ -10934,6 +10938,7 @@
                           "taker",
                           "timestamp",
                           "tokens",
+                          "tradeId",
                           "transactionHash",
                           "volumeUsd",
                           "zid",
@@ -11332,6 +11337,10 @@
                             },
                             "description": "Properties of the tokens involved in the trade"
                           },
+                          "tradeId": {
+                            "type": "integer",
+                            "description": "Internal ID of the trade. Can be used together with `chainId`, `transactionHash`, and `zid` to uniquely identify a trade."
+                          },
                           "transactionHash": {
                             "type": "string",
                             "description": "The trade's transaction hash"
@@ -11369,6 +11378,7 @@
                           "taker",
                           "timestamp",
                           "tokens",
+                          "tradeId",
                           "transactionHash",
                           "volumeUsd",
                           "zid",

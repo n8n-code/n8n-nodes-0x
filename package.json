@@ -1,6 +1,6 @@
 {
   "name": "@n8n-dev/n8n-nodes-0x",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "description": "0x DEX aggregator unifies liquidity, token swaps, pricing, and onchain trading across EVM, Solana, and cross-chain.",
   "license": "MIT",
   "homepage": "https://n8n-code.github.io/n8n-dev/#/n8n-nodes-0x",
