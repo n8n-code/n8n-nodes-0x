@@ -8538,10 +8538,9 @@
                             "type": {
                               "type": "string",
                               "enum": [
-                                "settler_metatransaction",
-                                "settler_intent"
+                                "settler_metatransaction"
                               ],
-                              "description": "The transaction type determined by the trade route. This is currently just `settler_metatransaction` and could expand to more types in the future"
+                              "description": "The transaction type for a Gasless trade"
                             },
                             "hash": {
                               "type": "string",
@@ -9450,8 +9449,7 @@
                       "type": {
                         "type": "string",
                         "enum": [
-                          "settler_metatransaction",
-                          "settler_intent"
+                          "settler_metatransaction"
                         ],
                         "description": "The `trade.type` from the quote endpoint"
                       },
@@ -9505,40 +9503,16 @@
                             "additionalProperties": false
                           },
                           "message": {
-                            "anyOf": [
-                              {
+                            "type": "object",
+                            "properties": {
+                              "permitted": {
                                 "type": "object",
                                 "properties": {
-                                  "permitted": {
-                                    "type": "object",
-                                    "properties": {
-                                      "token": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "amount": {
-                                        "anyOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "number"
-                                          },
-                                          {}
-                                        ]
-                                      }
-                                    },
-                                    "required": [
-                                      "token",
-                                      "amount"
-                                    ],
-                                    "additionalProperties": false
-                                  },
-                                  "spender": {
+                                  "token": {
                                     "type": "string",
                                     "pattern": "^0x[a-fA-F0-9]{40}$"
                                   },
-                                  "nonce": {
+                                  "amount": {
                                     "anyOf": [
                                       {
                                         "type": "string"
@@ -9548,98 +9522,52 @@
                                       },
                                       {}
                                     ]
-                                  },
-                                  "deadline": {
-                                    "anyOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "number"
-                                      },
-                                      {}
-                                    ]
-                                  },
-                                  "slippageAndActions": {
-                                    "type": "object",
-                                    "properties": {
-                                      "recipient": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "buyToken": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "minAmountOut": {
-                                        "anyOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "number"
-                                          },
-                                          {}
-                                        ]
-                                      },
-                                      "actions": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    },
-                                    "required": [
-                                      "recipient",
-                                      "buyToken",
-                                      "minAmountOut",
-                                      "actions"
-                                    ],
-                                    "additionalProperties": false
                                   }
                                 },
                                 "required": [
-                                  "permitted",
-                                  "spender",
-                                  "nonce",
-                                  "deadline",
-                                  "slippageAndActions"
+                                  "token",
+                                  "amount"
                                 ],
                                 "additionalProperties": false
                               },
-                              {
+                              "spender": {
+                                "type": "string",
+                                "pattern": "^0x[a-fA-F0-9]{40}$"
+                              },
+                              "nonce": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  },
+                                  {}
+                                ]
+                              },
+                              "deadline": {
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  },
+                                  {}
+                                ]
+                              },
+                              "slippageAndActions": {
                                 "type": "object",
                                 "properties": {
-                                  "permitted": {
-                                    "type": "object",
-                                    "properties": {
-                                      "token": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "amount": {
-                                        "anyOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "number"
-                                          },
-                                          {}
-                                        ]
-                                      }
-                                    },
-                                    "required": [
-                                      "token",
-                                      "amount"
-                                    ],
-                                    "additionalProperties": false
-                                  },
-                                  "spender": {
+                                  "recipient": {
                                     "type": "string",
                                     "pattern": "^0x[a-fA-F0-9]{40}$"
                                   },
-                                  "nonce": {
+                                  "buyToken": {
+                                    "type": "string",
+                                    "pattern": "^0x[a-fA-F0-9]{40}$"
+                                  },
+                                  "minAmountOut": {
                                     "anyOf": [
                                       {
                                         "type": "string"
@@ -9650,58 +9578,30 @@
                                       {}
                                     ]
                                   },
-                                  "deadline": {
-                                    "anyOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "number"
-                                      },
-                                      {}
-                                    ]
-                                  },
-                                  "slippage": {
-                                    "type": "object",
-                                    "properties": {
-                                      "recipient": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "buyToken": {
-                                        "type": "string",
-                                        "pattern": "^0x[a-fA-F0-9]{40}$"
-                                      },
-                                      "minAmountOut": {
-                                        "anyOf": [
-                                          {
-                                            "type": "string"
-                                          },
-                                          {
-                                            "type": "number"
-                                          },
-                                          {}
-                                        ]
-                                      }
-                                    },
-                                    "required": [
-                                      "recipient",
-                                      "buyToken",
-                                      "minAmountOut"
-                                    ],
-                                    "additionalProperties": false
+                                  "actions": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
                                   }
                                 },
                                 "required": [
-                                  "permitted",
-                                  "spender",
-                                  "nonce",
-                                  "deadline",
-                                  "slippage"
+                                  "recipient",
+                                  "buyToken",
+                                  "minAmountOut",
+                                  "actions"
                                 ],
                                 "additionalProperties": false
                               }
-                            ]
+                            },
+                            "required": [
+                              "permitted",
+                              "spender",
+                              "nonce",
+                              "deadline",
+                              "slippageAndActions"
+                            ],
+                            "additionalProperties": false
                           }
                         },
                         "required": [
@@ -9972,10 +9872,9 @@
                     "type": {
                       "type": "string",
                       "enum": [
-                        "settler_metatransaction",
-                        "settler_intent"
+                        "settler_metatransaction"
                       ],
-                      "description": "The transaction type determined by the trade route. This is currently just `settler_metatransaction` and could expand to more types in the future"
+                      "description": "The transaction type for a Gasless trade"
                     },
                     "zid": {
                       "type": "string",
