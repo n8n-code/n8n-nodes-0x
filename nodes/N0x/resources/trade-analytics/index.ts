@@ -114,7 +114,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 			"displayName": "Cursor",
 			"name": "cursor",
 			"description": "A pagination cursor used to fetch the next page of trades. It should be set to `null` for the initial request; otherwise, it should be the value of `nextCursor` that is returned from `getSwapTrades` or `getGaslessTrades` calls.",
-			"default": "eyJ0aW1lc3RhbXAiOjE3MjkwMzIyMTAsInppZCI6IjB4N2FjM2NlMzExNjA2NzU5MGY5M2U3MWVmIn0=",
+			"default": "eyJ0aW1lc3RhbXAiOjE3MjkwMzIyMTAwMDAsInRyYW5zYWN0aW9uSGFzaCI6IjB4N2FjM2NlMzExNjA2NzU5MGY5M2U3MWVmIiwidHJhZGVJZCI6MH0=",
 			"type": "string",
 			"routing": {
 				"send": {
@@ -258,7 +258,7 @@ export const tradeAnalyticsDescription: INodeProperties[] = [
 			"displayName": "Cursor",
 			"name": "cursor",
 			"description": "A pagination cursor used to fetch the next page of trades. It should be set to `null` for the initial request; otherwise, it should be the value of `nextCursor` that is returned from `getSwapTrades` or `getGaslessTrades` calls.",
-			"default": "eyJ0aW1lc3RhbXAiOjE3MjkwMzIyMTAsInppZCI6IjB4N2FjM2NlMzExNjA2NzU5MGY5M2U3MWVmIn0=",
+			"default": "eyJ0aW1lc3RhbXAiOjE3MjkwMzIyMTAwMDAsInRyYW5zYWN0aW9uSGFzaCI6IjB4N2FjM2NlMzExNjA2NzU5MGY5M2U3MWVmIiwidHJhZGVJZCI6MH0=",
 			"type": "string",
 			"routing": {
 				"send": {
