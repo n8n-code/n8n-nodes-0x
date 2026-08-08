@@ -7939,6 +7939,7 @@
                               "enum": [
                                 "executeMetaTransaction::approve",
                                 "permit",
+                                "erc7597Permit",
                                 "daiPermit"
                               ]
                             },
@@ -9058,6 +9059,7 @@
                         "enum": [
                           "executeMetaTransaction::approve",
                           "permit",
+                          "erc7597Permit",
                           "daiPermit"
                         ],
                         "description": "The `approval.type` from the quote endpoint"
