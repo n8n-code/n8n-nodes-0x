@@ -502,7 +502,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {
@@ -1060,7 +1060,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {
@@ -1617,7 +1617,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {
@@ -2175,7 +2175,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. If this parameter is set to 0, no slippage will be tolerated. If not provided, the default slippage tolerance is 100Bps. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {

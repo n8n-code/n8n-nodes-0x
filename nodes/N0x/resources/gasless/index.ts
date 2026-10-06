@@ -428,7 +428,7 @@ export const gaslessDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. 0x sets the optimal slippage tolerance per trade by default. To mitigate the risk of MEV attacks, we recommend adjusting this value only when trading low-liquidity tokens.",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. 0x sets the optimal slippage tolerance per trade by default. To mitigate the risk of MEV attacks, we recommend adjusting this value only when trading low-liquidity tokens. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {
@@ -852,7 +852,7 @@ export const gaslessDescription: INodeProperties[] = [
 		{
 			"displayName": "Slippage Bps",
 			"name": "slippageBps",
-			"description": "The maximum acceptable slippage of the `buyToken` in Bps. 0x sets the optimal slippage tolerance per trade by default. To mitigate the risk of MEV attacks, we recommend adjusting this value only when trading low-liquidity tokens.",
+			"description": "The maximum acceptable slippage of the `buyToken` in Bps. 0x sets the optimal slippage tolerance per trade by default. To mitigate the risk of MEV attacks, we recommend adjusting this value only when trading low-liquidity tokens. Deprecated: use `slippagePpm` instead. `slippageBps` accepts only whole numbers.",
 			"default": 0,
 			"type": "number",
 			"routing": {
