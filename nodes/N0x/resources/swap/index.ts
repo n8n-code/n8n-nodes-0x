@@ -352,7 +352,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Swap Fee Recipient",
 			"name": "swapFeeRecipient",
-			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -400,9 +400,34 @@ export const swapDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"displayName": "Swap Fee Ppm",
+			"name": "swapFeePpm",
+			"description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": "",
+			"type": "string",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "swapFeePpm",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Allowance Holder Get Price"
+					]
+				}
+			}
+		},
+		{
 			"displayName": "Swap Fee Token",
 			"name": "swapFeeToken",
-			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -452,13 +477,38 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Trade Surplus Max Bps",
 			"name": "tradeSurplusMaxBps",
-			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`.",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`.",
 			"default": 0,
 			"type": "number",
 			"routing": {
 				"send": {
 					"type": "query",
 					"property": "tradeSurplusMaxBps",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Allowance Holder Get Price"
+					]
+				}
+			}
+		},
+		{
+			"displayName": "Trade Surplus Max Ppm",
+			"name": "tradeSurplusMaxPpm",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": 0,
+			"type": "number",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "tradeSurplusMaxPpm",
 					"value": "={{ $value }}",
 					"propertyInDotNotation": false
 				}
@@ -910,7 +960,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Swap Fee Recipient",
 			"name": "swapFeeRecipient",
-			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -958,9 +1008,34 @@ export const swapDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"displayName": "Swap Fee Ppm",
+			"name": "swapFeePpm",
+			"description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": "",
+			"type": "string",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "swapFeePpm",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Allowance Holder Get Quote"
+					]
+				}
+			}
+		},
+		{
 			"displayName": "Swap Fee Token",
 			"name": "swapFeeToken",
-			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -1010,13 +1085,38 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Trade Surplus Max Bps",
 			"name": "tradeSurplusMaxBps",
-			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`.",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`.",
 			"default": 0,
 			"type": "number",
 			"routing": {
 				"send": {
 					"type": "query",
 					"property": "tradeSurplusMaxBps",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Allowance Holder Get Quote"
+					]
+				}
+			}
+		},
+		{
+			"displayName": "Trade Surplus Max Ppm",
+			"name": "tradeSurplusMaxPpm",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": 0,
+			"type": "number",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "tradeSurplusMaxPpm",
 					"value": "={{ $value }}",
 					"propertyInDotNotation": false
 				}
@@ -1467,7 +1567,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Swap Fee Recipient",
 			"name": "swapFeeRecipient",
-			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -1515,9 +1615,34 @@ export const swapDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"displayName": "Swap Fee Ppm",
+			"name": "swapFeePpm",
+			"description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": "",
+			"type": "string",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "swapFeePpm",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Permit 2 Get Price"
+					]
+				}
+			}
+		},
+		{
 			"displayName": "Swap Fee Token",
 			"name": "swapFeeToken",
-			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -1567,13 +1692,38 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Trade Surplus Max Bps",
 			"name": "tradeSurplusMaxBps",
-			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`.",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`.",
 			"default": 0,
 			"type": "number",
 			"routing": {
 				"send": {
 					"type": "query",
 					"property": "tradeSurplusMaxBps",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Permit 2 Get Price"
+					]
+				}
+			}
+		},
+		{
+			"displayName": "Trade Surplus Max Ppm",
+			"name": "tradeSurplusMaxPpm",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": 0,
+			"type": "number",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "tradeSurplusMaxPpm",
 					"value": "={{ $value }}",
 					"propertyInDotNotation": false
 				}
@@ -2025,7 +2175,7 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Swap Fee Recipient",
 			"name": "swapFeeRecipient",
-			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -2073,9 +2223,34 @@ export const swapDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"displayName": "Swap Fee Ppm",
+			"name": "swapFeePpm",
+			"description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": "",
+			"type": "string",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "swapFeePpm",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Permit 2 Get Quote"
+					]
+				}
+			}
+		},
+		{
 			"displayName": "Swap Fee Token",
 			"name": "swapFeeToken",
-			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`.",
+			"description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`.",
 			"default": "",
 			"type": "string",
 			"routing": {
@@ -2125,13 +2300,38 @@ export const swapDescription: INodeProperties[] = [
 		{
 			"displayName": "Trade Surplus Max Bps",
 			"name": "tradeSurplusMaxBps",
-			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`.",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`.",
 			"default": 0,
 			"type": "number",
 			"routing": {
 				"send": {
 					"type": "query",
 					"property": "tradeSurplusMaxBps",
+					"value": "={{ $value }}",
+					"propertyInDotNotation": false
+				}
+			},
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Swap"
+					],
+					"operation": [
+						"Swap Permit 2 Get Quote"
+					]
+				}
+			}
+		},
+		{
+			"displayName": "Trade Surplus Max Ppm",
+			"name": "tradeSurplusMaxPpm",
+			"description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%.",
+			"default": 0,
+			"type": "number",
+			"routing": {
+				"send": {
+					"type": "query",
+					"property": "tradeSurplusMaxPpm",
 					"value": "={{ $value }}",
 					"propertyInDotNotation": false
 				}

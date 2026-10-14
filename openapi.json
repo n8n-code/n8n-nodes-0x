@@ -131,7 +131,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -144,6 +144,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -151,7 +161,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -172,7 +182,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "gasPrice",
@@ -1697,7 +1718,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -1710,6 +1731,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -1717,7 +1748,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -1738,7 +1769,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "gasPrice",
@@ -3332,7 +3374,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -3345,6 +3387,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -3352,7 +3404,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -3373,7 +3425,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "gasPrice",
@@ -4898,7 +4961,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -4911,6 +4974,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -4918,7 +4991,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -4939,7 +5012,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "gasPrice",
@@ -6957,7 +7041,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -6970,6 +7054,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -6977,7 +7071,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -6998,7 +7092,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "slippageBps",
@@ -7840,7 +7945,7 @@
               "type": "string",
               "pattern": "^\\s*0x[a-fA-F0-9]{40}(\\s*,\\s*0x[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify the `swapFeeBps` in the request to use this feature. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The wallet address to receive the specified trading fees (supports single or multiple comma-separated values). You must also specify `swapFeeBps` or `swapFeePpm` in the request to use this feature. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "swapFeeBps",
@@ -7853,6 +7958,16 @@
             "description": "The amount in Bps of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). You must also specify the `swapFeeRecipient` in the request to use this feature. For security, this field has a default limit of 1000 Bps. If your application requires a higher value, please reach out to us."
           },
           {
+            "name": "swapFeePpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\s*\\d+(\\s*,\\s*\\d+)*\\s*$"
+            },
+            "description": "The amount in parts-per-million (PPM) of the `swapFeeToken` to charge and deliver to the `swapFeeRecipient` (supports single or multiple comma-separated values). Mutually exclusive with `swapFeeBps`. You must also specify the `swapFeeRecipient` in the request to use this feature. Each value must be an integer from 0 to 1000000. For security, this field has a default limit of 100000 PPM. If your application requires a higher value, please reach out to us. e.g. 5000 PPM = 50 BPS = 0.5%."
+          },
+          {
             "name": "swapFeeToken",
             "in": "query",
             "required": false,
@@ -7860,7 +7975,7 @@
               "type": "string",
               "pattern": "^\\s*0x(?!0{40})[a-fA-F0-9]{40}(\\s*,\\s*0x(?!0{40})[a-fA-F0-9]{40})*\\s*$"
             },
-            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and `swapFeeBps` to charge integrator fees. When multiple values are provided, must match length of `swapFeeBps`."
+            "description": "The contract address of the token to receive trading fees in (supports single or multiple comma-separated values). Each token must be set to the value of either the `buyToken` or the `sellToken`. If omitted, the fee token will be determined by 0x with preference to stablecoins and highly liquid assets. You must also specify the `swapFeeRecipient` and either `swapFeeBps` or `swapFeePpm` to charge integrator fees. When multiple values are provided, must match the length of `swapFeeBps` or `swapFeePpm`."
           },
           {
             "name": "tradeSurplusRecipient",
@@ -7881,7 +7996,18 @@
               "minimum": 1,
               "maximum": 10000
             },
-            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`."
+            "description": "The maximum trade surplus (positive slippage) that can be collected in Bps of the buy amount. If not provided, defaults to 10000 (100%). Must be used together with `tradeSurplusRecipient`. Mutually exclusive with `tradeSurplusMaxPpm`."
+          },
+          {
+            "name": "tradeSurplusMaxPpm",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000
+            },
+            "description": "The maximum trade surplus (positive slippage) that can be collected in parts-per-million (PPM) of the buy amount. Mutually exclusive with `tradeSurplusMaxBps`. If not provided, defaults to 1000000 (100%). Must be used together with `tradeSurplusRecipient`. e.g. 5000 PPM = 50 BPS = 0.5%."
           },
           {
             "name": "slippageBps",
